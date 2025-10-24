@@ -33,8 +33,8 @@
         else {
             echo "CHECK PLS";
         }
-        if (isset($_POST['date'])) {
-            echo "Date : " . htmlspecialchars($_POST['date']) . "<br>";
+        if (isset($_POST['bookday'])) {
+            echo "Date : " . htmlspecialchars($_POST['bookday']) . "<br>";
         }
         else {
             echo "CHECK PLS";
@@ -45,9 +45,40 @@
         else {
             echo "CHECK PLS";
         }
+        if (isset($_POST['accom']) || isset($_POST['4day']) || isset($_POST['10day'])) {
+    echo "<p>Booking: ";
+
+    if (isset($_POST['accom'])) echo htmlspecialchars($_POST['accom']) . " ";
+    if (isset($_POST['4day'])) echo htmlspecialchars($_POST['4day']) . " ";
+    if (isset($_POST['10day'])) echo htmlspecialchars($_POST['10day']) . " ";
+
+    echo "</p>";
+} else {
+    echo "CHECK PLS";
+}
+     if (isset($_POST['species'])) {
+
+        $species_map = [
+            'M' => 'Human',
+            'D' => 'Dwarf',
+            'E' => 'Elf',
+            'H' => 'Hobbit'
+        ];
+
+        
+        $species_code = htmlspecialchars($_POST['species']);
+        $species_name = $species_map[$species_code] ?? 'Unknown';
 
 
-    }
+    echo "<p>Species: " . $species_name . "</p>";
+} else {
+    echo "<p>CHECK PLS</p>";
+}
+
+    echo "</p>";
+} else {
+    echo "CHECK PLS";
+}  
     ?>
 </body>
 </html>
